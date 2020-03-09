@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+ 
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/menu.xsd">
+	<menu>
+		<add 
+		id="OM_Press::main_menu" 
+		title="Press" 
+		module="OM_Press" 
+		sortOrder="20" 
+		resource="OM_Press::press" 
+		/>
+		<add 
+		id="OM_Press::add_press" 
+		title="Add press" 
+		module="OM_Press" 
+		sortOrder="1" 
+		parent="OM_Press::main_menu" 
+		action="press/press/new" 
+		resource="OM_Press::manage_press" 
+		/>
+		<add 
+		id="OM_Press::manage_press" 
+		title="Manage Press" 
+		module="OM_Press" 
+		sortOrder="2" 
+		parent="OM_Press::main_menu" 
+		action="press/press/index" 
+		resource="OM_Press::manage_press" 
+		/>
+		<add 
+		id="OM_Press::configuration" 
+		title="Configurations" 
+		module="OM_Press" 
+		sortOrder="3" 
+		parent="OM_Press::main_menu" 
+		action="adminhtml/system_config/edit/section/press" 
+		resource="OM_Press::configuration" 
+		/>
+	</menu>
+</config>

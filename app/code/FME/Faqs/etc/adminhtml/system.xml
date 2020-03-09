@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="fmeextensions" translate="label" sortOrder="1000">
+            <label>FME Extensions</label>
+        </tab>
+        <section id="faqs" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Faqs</label>
+            <tab>fmeextensions</tab>
+            <resource>FME_Faqs::faqs_config</resource>
+            <group id="list" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Faqs Page Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>                    
+                </field>
+                <field id="page_title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Page Title</label>                                     
+                </field>
+                <field id="identifier" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Identifier</label>                                     
+                </field>
+                <field id="meta_keywords" translate="label" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Meta Keywords</label>                                     
+                </field>
+                <field id="meta_description" translate="label" type="textarea" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Meta Description</label>                                     
+                </field>
+                <field id="display_topics" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Selected Topics</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model> 
+                    <comment>display selected OR all topics on main page</comment>                   
+                </field>
+                <field id="show_number_of_questions" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Number of Questions</label>  
+                     <comment>show number of selected questions with each category (0 for none)</comment>                                   
+                </field>
+                <field id="enable_view_more" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Read More</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>show read more link under category</comment>
+                </field>
+                <field id="enable_accordion" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Accordion</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="answer_length" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Visible Answer Length</label>  
+                     <comment>maximum length of answer, visible for listing pages (0 for default length)</comment>                                   
+                </field>
+            </group>
+            <group id="rating" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Faqs Rating</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Rating</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="allow_customers" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Allow Faqs Rating</label>
+                    <source_model>FME\Faqs\Model\Config\Source\Ratingcustomers</source_model>
+                </field>
+            </group>
+            <group id="general" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Faqs Block Settings</label>
+                <field id="faq_block" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Faqs Block</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>                    
+                </field>
+                <field id="faq_search_block" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Faqs Search Block</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="faq_maxtopic" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximum number of tpoics displayed in block</label>                    
+                </field>
+                <field id="tags_block" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tags Block</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>                    
+                </field>
+                <field id="max_tags" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximum tags to show in block</label>  
+                    <comment>set 'empty' or '0' to show all tags</comment>                  
+                </field>
+            </group>
+            <group id="seo" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>SEO</label>
+                <field id="url_suffix" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>URL Suffix</label>
+                    <comment>(eg: .html)</comment>
+                </field>
+            </group>
+            
+            
+            
+            
+        </section>
+    </system>
+</config>

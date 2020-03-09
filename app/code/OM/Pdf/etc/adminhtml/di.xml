@@ -1,0 +1,5 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="\Magento\Sales\Block\Adminhtml\Order\Invoice\View">
+        <plugin name="OM_Pdf::InvoicePrint" type="OM\Pdf\Plugin\PluginBtnInvoiceView" />
+    </type>
+</config>

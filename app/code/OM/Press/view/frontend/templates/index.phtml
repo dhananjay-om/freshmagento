@@ -1,0 +1,45 @@
+<?php
+$mediapath	=  $this->getMediaPath('media');
+$headline	= $this->getConfig('press_config/general/press_heading');
+$headline = ($headline != '') ? $headline : 'Latest Press';
+$latestPress = $block->getLatestPress();
+if ($latestPress->getSize() > 0) :
+?>
+<div class="block block-press">
+	<div id="press" class="press-home-container vogue-content owl-carousel">
+		<?php foreach ($latestPress as $press) : ?>
+				<div class="press_content">						   
+				   <?php 
+				   		$img = $press->getImage(); 
+						if($img != ''):
+					?>
+						<div class="blog-logo" style="width:15%;margin:auto"><img src="<?php echo $mediapath. $img ; ?>" class="t-img" /></div>
+					<?php endif; ?>
+				   <!-- <h2 class="home-press-heeading"><?php echo $press->getTitle(); ?></h2> -->
+				   <div class="home-press-content vogue-contents"><?php echo $press->getText() ?></div>
+				   <!-- <p class="cname">-<em><?php echo $press->getName() ?></em></p> -->
+				</div>
+			
+		 <?php endforeach; ?>
+	  
+	</div>	  
+</div>
+<?php endif; ?>
+<script>
+	require(
+    ['jquery', 'jquery/ui', 'owlcarousel'], 
+    function($) {
+    	$('.vogue-content').owlCarousel({
+                loop: true,
+                margin: 0,
+                slideSpeed: 1500,
+                dots: false,
+                items: 1,
+                scrollPerPage: true,
+                lazyLoad: true,
+                autoplay:true,
+                navigation: true,
+                slideBy: 1
+            });
+    });
+</script>

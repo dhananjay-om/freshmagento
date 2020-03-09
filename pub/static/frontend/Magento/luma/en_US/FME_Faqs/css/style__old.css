@@ -1,0 +1,243 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/*Theme1*/
+
+.theme1 { width:685px; margin:0px; padding:0px; }
+
+.theme1 .read_more { font-family:Arial; font-size:12px; font-weight:normal; color:#1E7EC8; text-decoration:underline; margin-left:20px; line-height:30px; }
+
+.theme1 .read_more:hover { color:#1E7EC8; text-decoration:none; }
+
+.theme1 h1 { font-family:"Trebuchet MS"; font-size:17px; font-weight:normal; color:#404040; line-height:35px; margin-top:20px; }
+
+.theme1 ul { list-style:none; padding:0px; margin-left:20px; }
+
+.theme1 ul li { line-height:25px; list-style:decimal; font-family:Arial; font-size:12px; font-weight:bold; color:#000; }
+
+.theme1 ul li a { font-family:Arial; font-size:14px; font-weight:normal; color:#343032; text-decoration:none; }
+
+.theme1 ul li p { padding:5px 0 5px 15px; }
+
+.theme1 ul li .answer { background:#f7f7f7; border:#e5e5e5 1px solid; padding:10px; width:620px; margin:8px 0 8px 2px; }
+
+.theme1 ul li .answer p { font-family:Verdana; font-size:12px; color:#343032; line-height:20px; }
+
+/*responsive theme1*/
+
+@media (min-width:200px) and (max-width:1020px) {
+
+.theme1{ width:100%;}
+.theme1 ul li .answer { width:87%;}	
+}
+
+
+
+/*Theme2*/
+
+.theme2 { width:685px; margin:0px; padding:0px; }
+
+.theme2 .read_more { font-family:Arial; font-size:12px; font-weight:normal; color:#000; text-decoration:underline; margin-left:32px; line-height:35px; }
+
+.theme2 .read_more:hover { color:#1E7EC8; text-decoration:none; }
+
+.theme2 h1 { font-family:"Trebuchet MS"; font-size:17px; font-weight:normal; color:#404040; line-height:35px; margin-top:20px; margin-bottom: 5px; }
+
+.theme2 .rate-success { background: url("success.gif") no-repeat scroll left center; padding-left: 26px; margin-left: 30px; font-family:"Trebuchet MS"; font-size:14px; font-weight:normal; color:green; line-height:40px; }
+
+.rate-success { background: url("success.gif") no-repeat scroll left center; padding-left: 26px; font-family:"Trebuchet MS"; font-size:14px; font-weight:normal; color:green; line-height:40px; }
+
+.theme2 .rate-fail { padding-left: 54px; font-family:"Trebuchet MS"; font-size:14px; font-weight:normal; color:red; line-height:35px; }
+
+.theme2 ul { list-style:none; padding:0px; margin-left:10px; }
+
+.theme2 ul li { padding-left:22px; }
+
+.theme2 ul li.plus { line-height:25px; background:url(plus.png) no-repeat left top; }
+
+.theme2 ul li.minus { background:url(minus.png) no-repeat left top; vertical-align:top;  }
+
+.theme2 ul li.minus p { font-family:Verdana; font-size:12px; color:#343032; line-height:20px; } 
+
+.theme2 ul li a { font-family:Arial; font-size:13px; font-weight:bold; color:#343032; text-decoration:none; }
+
+.theme2 ul li p { padding:5px 0 5px 0px; }
+
+.theme2 ul li .answer { background:#f7f7f7; border:#e5e5e5 1px solid; padding:10px; width:620px; margin:8px 0 8px 2px; }
+
+.theme2 ul li .answer p { font-family:Verdana; font-size:12px; color:#343032; line-height:20px;  }
+
+.theme2 ul li .accordion-toggle {
+    background: rgba(0, 0, 0, 0) url("plus.png") no-repeat scroll left top;
+    color: #343032;
+    cursor: pointer;
+    font-family: arial;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 25px;
+    padding-left: 22px;
+    text-decoration: none;
+    z-index: 10;
+}
+
+.theme2 ul li .ui-accordion-header-active {
+    background: rgba(0, 0, 0, 0) url("minus.png") no-repeat scroll left top;    
+}
+
+.theme2 ul li .accordion-content {
+    overflow: hidden;
+    padding-left: 22px;
+}
+
+/*responsive theme2*/
+
+@media (min-width:200px) and (max-width:1020px) {
+
+.theme2{ width:100%;}
+.theme2 ul li .answer { width:80%;}	
+
+}
+
+.faq-tags .faq-tag {
+    background: #e4edf4 none repeat scroll 0 0;
+    border: 1px solid #e4edf4;
+    border-radius: 0;
+    color: #3e6d8e;
+    cursor: pointer;
+    display: inline-block;
+/*    float: left;*/
+    font-size: 12px;
+    line-height: 1;
+    margin: 2px 2px 2px 0;
+    padding: 0.4em 0.5em;
+    text-align: center;
+    text-decoration: none;
+    transition: color 0.15s ease 0s, background 0.15s ease 0s, border 0.15s ease 0s;
+    white-space: nowrap;
+}
+
+
+/*Theme3*/
+
+.theme3 { width:685px; margin:0px; padding:0px; }
+
+.theme3 .read_more { font-family:Arial; font-size:12px; font-weight:normal; color:#000; text-decoration:none; margin-left:32px; line-height:35px; }
+
+.theme3 .read_more:hover { color:#1E7EC8; text-decoration:none; }
+
+.theme3 h1 { font-family:"Trebuchet MS"; font-size:17px; font-weight:normal; color:#404040; line-height:35px; margin-top:20px; }
+
+.theme3 ul { list-style:none; padding:0px; margin-left:18px; }
+
+.theme3 ul li { line-height:25px; margin:0 0 5px 0; padding-left:23px; padding-right:10px; }
+
+.theme3 ul li.question{ background:url(bullet1.jpg) no-repeat left 8px top 10px; background-color:#e3e3e3;}
+
+.theme3 ul li.ans { background:none !important; list-style:none; padding-left:0px; padding-right:0px; }
+
+.theme3 ul li.ans p { font-family:Verdana; font-size:12px; color:#343032; line-height:20px; margin-left:0px; }
+
+.theme3 ul li.ans a { background:none; padding-left:23px; } 
+
+.theme3 ul li a { font-family:Arial; font-size:13px; font-weight:bold; color:#343032; text-decoration:none; padding-left:0px; }
+
+.theme3 ul li p { padding:5px 0 5px 15px; }
+
+.theme3 ul li .answer { background:#f7f7f7; border:#e5e5e5 1px solid; padding:10px; width:620px; margin:8px 0 8px 2px; }
+
+.theme3 ul li .answer p { font-family:Verdana; font-size:12px; color:#343032; line-height:20px; line-height:20px; }
+
+
+/*responsive theme3*/
+
+@media (min-width:200px) and (max-width:1020px) {
+
+.theme3{ width:100%;}
+.theme3 ul li .answer { width:87%;}
+.theme3 ul li{}
+.theme3 ul li a{ margin-left:0px; 	
+}
+@media (min-width:200px) and (max-width:420px) {
+.theme3 ul li a{ margin-left:0px; font-size:12px;}	
+}
+
+
+
+
+/*Theme4*/
+
+.theme4 { width:685px; margin:0px; padding:0px; }
+
+.theme4 .read_more { font-family:Arial; font-size:12px; font-weight:normal; color:#1E7EC8; text-decoration:none; line-height:35px; }
+
+.theme4 .read_more:hover { color:#1E7EC8; text-decoration:underline; }
+
+.theme4 h1 { font-family:"Trebuchet MS"; font-size:17px; font-weight:normal; color:#404040; line-height:35px; margin-top:20px; }
+
+.theme4 ul { list-style:none; padding:0px; margin-left:0px; }
+
+.theme4 ul li { line-height:25px; margin:0 0 5px 0; }
+
+.theme4 ul li.ans { background:none; list-style:none; }
+
+.theme4 ul li.ans p { font-family:Verdana; font-size:12px; color:#343032; line-height:20px; margin-left:0px; }
+
+.theme4 ul li.ans a { background:none; } 
+
+.theme4 ul li a { font-family:Arial; font-size:13px; font-weight:bold; color:#343032; text-decoration:none; padding-left:0px; margin-left:0px; }
+
+.theme4 ul li p { padding:5px 0 5px 0px; }
+
+/*responsive theme4*/
+
+@media (min-width:200px) and (max-width:1020px) {
+
+.theme4{ width:100%;}
+.theme4 ul li .answer { width:87%;}
+	
+}
+
+
+
+
+
+
+
+/*Theme5*/
+
+.theme5 { width:685px; margin:0px; padding:0px; }
+
+.theme5 .read_more { font-family:Arial; font-size:12px; font-weight:normal; color:#1E7EC8; text-decoration:none; line-height:35px; }
+
+.theme5 .read_more:hover { color:#1E7EC8; text-decoration:underline; }
+
+.theme5 h1 { font-family:"Trebuchet MS"; font-size:17px; font-weight:normal; color:#404040; line-height:40px; margin-top:20px; text-transform:uppercase; }
+
+.theme5 ul { list-style:none; padding:0px; margin-left:0px; }
+
+.theme5 ul li { line-height:25px; margin:0 0 5px 0; padding-left:22px; border-bottom:#ccc 1px solid; padding-bottom:4px; }
+
+.theme5 ul li.question { background:url(left.png) no-repeat left top 5px; }
+
+.theme5 ul li.ans { background:url(down.png) no-repeat left top; }
+
+.theme5 ul li.ans p { font-family:Verdana; font-size:12px; color:#343032; line-height:20px; }
+
+.theme5 ul li.ans a { background:none; } 
+
+.theme5 ul li a { font-family:Arial; font-size:13px; font-weight:bold; color:#343032; text-decoration:none; margin-left:0px; }
+
+.theme5 ul li p { padding:5px 0 5px 0px; }
+
+
+
+/*responsive theme5*/
+
+@media (min-width:200px) and (max-width:1020px) {
+
+.theme5{ width:100%;}
+.theme5 ul li .answer { width:87%;}
+	
+}
+

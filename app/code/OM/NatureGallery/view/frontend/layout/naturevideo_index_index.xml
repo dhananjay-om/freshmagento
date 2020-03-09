@@ -1,0 +1,60 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+
+	<head>
+        <title>Video</title>
+        <css src="Om_NatureGallery::css/flexslider.css"/>
+        <!-- 
+		demo
+		<css src="Om_NatureGallery::css/css.css"/>
+		<script src="Om_NatureGallery::js/js.js"/>
+		<css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+		<script src="path/file.js" defer="defer"/>
+		<link src="http://url.com" src_type="url"/>
+		<remove src="path/remove/file.css"/>
+
+		-->
+    </head> 
+
+    <body>
+
+
+        <referenceContainer name="sidebar.main">
+            <block class="Om\NatureGallery\Block\Index\Sidebar" name="naturevideo_index_sidebar" before="-" template="Om_NatureGallery::naturevideo_index_sidebar.phtml"/>
+        </referenceContainer>
+
+        <referenceContainer name="content">
+            <block class="Om\NatureGallery\Block\Index\Video" name="naturevideo_index_index" template="Om_NatureGallery::naturevideo_index_index.phtml"/>
+        </referenceContainer>
+
+        <referenceContainer name="page.wrapper">
+        <referenceBlock name="breadcrumbs" remove="true"/>
+        <referenceContainer name="page.top">
+            <block class="Magento\Theme\Block\Html\Breadcrumbs" name="breadcrumbs.cms">
+                <action method="addCrumb">
+                    <argument name="crumbName" xsi:type="string">Home</argument>
+                    <argument name="crumbInfo" xsi:type="array">
+                        <item name="title" xsi:type="string">Home</item>
+                        <item name="label" xsi:type="string">Home</item>
+                        <item name="link" xsi:type="string">/</item>
+                    </argument>
+                </action> 
+                <action method="addCrumb">
+                    <argument name="crumbName" xsi:type="string">Gallery</argument>
+                    <argument name="crumbInfo" xsi:type="array">
+                        <item name="title" xsi:type="string">Gallery</item>
+                        <item name="label" xsi:type="string">Gallery</item>
+                        <item name="link" xsi:type="string">/gallery</item>
+                    </argument>
+                </action>
+                <action method="addCrumb">
+                    <argument name="crumbName" xsi:type="string">Videos</argument>
+                    <argument name="crumbInfo" xsi:type="array">
+                        <item name="title" xsi:type="string">Videos</item> 
+                        <item name="label" xsi:type="string">Videos</item> 
+                    </argument>
+                </action>
+            </block>
+            </referenceContainer>
+        </referenceContainer>
+    </body>
+</page>

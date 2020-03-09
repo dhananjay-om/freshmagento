@@ -1,0 +1,56 @@
+<?php $category = $block->getVideoGalleryCategory(); ?> 
+
+<!-- 
+<div class="product data items"
+     data-mage-init='{"mage/tabs": {"openedState": "active", "animate": {"duration": 100}, "active": 0,  "disabledState": "disabled"}}'>
+      
+      <?php foreach ($category as $key => $data): ?>
+        <div class="item title" data-role="collapsible">
+            <a class="switch" data-toggle="trigger" href="#tab-cars"><?php echo $data->getCategory();  ?></a>
+        </div>
+     <?php endforeach; ?>
+    
+    <?php foreach ($category as $key => $data1): ?>
+        <?php  
+            $category_name = $data1->getData('category');
+            $data_frames = $block->getVideoGalleryCollection($category_name);    
+        ?>
+            <div id="tab-cars" class="item content" data-role="content"><?php echo $data1->getTitle(); ?> </div>
+        
+    <?php endforeach; ?> 
+  
+    <?php  foreach ($data_frames as $key => $tabdata) {  ?>
+        
+
+    <div class="item title" data-role="collapsible"> 
+        <a class="switch" data-toggle="trigger" href="#tab-movies"><?php echo $tabdata->getCategory(); ?></a>
+    </div>
+    <div id="tab-movies" class="item content" data-role="content"><?php echo $tabdata->getTitle(); ?></div>
+
+      <?php }  ?>
+</div>   -->
+
+
+<div class="product data items"
+     data-mage-init='{"mage/tabs": {"openedState": "active", "animate": {"duration": 100}, "active": 1, "disabledState": "disabled"}}'>
+   
+    <?php foreach ($category as  $category_data): ?>
+        <?php 
+            $category_name = $category_data->getData('category'); 
+            $data_frames = $block->getVideoGalleryCollection($category_name);
+        ?>
+        <div class="item title" data-role="collapsible">
+            <a class="switch" data-toggle="trigger" href="#tab-<?php echo $category_name ?>"><?php echo $category_name ?></a>
+        </div>
+        <div id="tab-<?php echo $category_name ?>" class="item content" data-role="content">
+            <?php  foreach ($data_frames as $data): ?>
+               
+               <h2><?php echo $data->getTitle(); ?></h2> 
+              <iframe class="cus-responsive-width" width="560" height="315" src="<?php echo $data->getUrl(); ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            
+          <?php  endforeach ?>
+        </div>
+    <?php endforeach ?>
+
+    
+</div>

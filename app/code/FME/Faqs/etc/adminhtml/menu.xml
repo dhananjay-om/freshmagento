@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        
+        <update id="FME_Extensions::fmeextensions" title="FME Extensions" module="Magento_Backend" sortOrder="300" resource="FME_Extensions::fmeextensions"/>
+        <add id="FME_Faqs::faqs_main" title="Faqs" module="FME_Faqs" sortOrder="10" parent="FME_Extensions::fmeextensions" resource="FME_Faqs::faqs_main"/>
+        <add id="FME_Faqs::topic" title="Manage Topics" module="FME_Faqs" sortOrder="10" parent="FME_Faqs::faqs_main" action="faqs/topic/index" resource="FME_Faqs::topic"/>
+        <add id="FME_Faqs::faqs" title="Manage Faqs" module="FME_Faqs" sortOrder="20" parent="FME_Faqs::faqs_main" action="faqs/faqs/index" resource="FME_Faqs::faqs"/>
+        <add id="FME_Faqs::importexport" title="Manage Import/Export" module="FME_Faqs" sortOrder="30" parent="FME_Faqs::faqs_main" action="faqs/faqs/importexport" resource="FME_Faqs::importexport"/>
+    </menu>
+</config>

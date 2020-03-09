@@ -1,0 +1,12 @@
+.aw-rma-admin-cannedresponse-index .admin__data-grid-wrap .data-row,
+.aw_rma_admin-cannedresponse-index .admin__data-grid-wrap .data-row,
+.aw-rma-admin-rma-index .admin__data-grid-wrap .data-row,
+.aw_rma_admin-rma-index .admin__data-grid-wrap .data-row {
+  cursor: pointer;
+}
+.aw_rma_admin-cannedresponse-index .action-select-wrap .action-menu .action-submenu,
+.aw_rma_admin-rma-index .action-select-wrap .action-menu .action-submenu,
+.aw_rma_admin-cannedresponse-index .action-select-wrap .action-menu,
+.aw_rma_admin-rma-index .action-select-wrap .action-menu {
+  overflow-y: initial !important;
+}

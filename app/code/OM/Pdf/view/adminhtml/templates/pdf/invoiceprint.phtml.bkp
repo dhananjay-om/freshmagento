@@ -1,0 +1,229 @@
+<?php
+
+$data 			= $block->getParams();
+$invoiceId 		= $data['invoice_id'];
+$invoice 		= $block->getInvoice($invoiceId);
+$invoiceId 		= $invoice->getIncrementId();
+$orderId 		= $invoice->getOrderId();
+$order 			= $block->getOrder($orderId); 
+$orderId 		= $order->getIncrementId();
+$orderDate 		= $block->formatDate($order->getCreatedAt());
+$invoiceDate 	= $block->formatDate( $invoice->getCreatedAt());
+$payment 		= $order->getPayment();
+$method 		= $payment->getMethodInstance();
+$shippingAddress= $block->formatShipping($order);
+$billingAddress = $block->formatBilling($order);
+$grandTotal 	= $block->formatPrice($invoice->getGrandTotal());
+$totalqtys 		= 0;
+$shippingAmount = $block->formatPrice($order->getShippingAmount());
+/*
+var_dump($order->getData());
+exit;*/
+ob_end_clean();
+
+//echo $order->getBillingAddress()->getName();
+$html = '';
+$html .= '<div style="background:#ddd;width:100%;height:100%;"><div style="padding:20px;width:1000px;background:#fff;margin:0 auto;"><table border="0" cellspacing="3" cellpadding="4">';
+$html .= '<tr>';
+$html .= '<td><h3>Tax Invoice</h3></td>';
+$html .= "<td>Order Id: {$orderId} <br>Order Date: {$orderDate}</td>";
+$html .= "<td>Invoice No: {$invoiceId} <br>Invoice Date: {$invoiceDate}</td>";
+$html .= "<td>GSTIN: 07AAACA2573R2ZA <br>PAN: AAACA2573R</td>";
+$html .= '</tr>';
+
+$html .= '<tr><td colspan="4">';
+$html .= '<table border="0" cellspacing="3" cellpadding="4">';
+$html .= '<tr>';
+$html .= '<td><h4>Sold By</h4></td>';
+$html .= "<td><h4>Shipping Address</h4></td>";
+$html .= "<td><h4>Billig Address</h4></td>";
+$html .= '</tr>';
+
+$html .= '<tr>';
+$html .= '<td>RJ CORP LTD<br>C/o Mystique Logistics Private Limited. B-2/8,<br>Mohan cooperative Industrial Estate,<br>NEW DELHI - 110044</td>';
+$html .= "<td>{$shippingAddress}</td>";
+$html .= "<td>{$billingAddress}</td>";
+$html .= '</tr>';
+$html .= '</table>';
+
+
+
+$html .= '</td></tr>';
+
+$html .= '<tr>';
+$html .= '<td colspan="4">
+ 		<table style="border-color:#ddd;" cellspacing="0" cellpadding="2">
+        <thead>
+            <tr class="headings">
+                <th class="col-product"><span>Product</span></th>
+                <th class="col-description"><span>Description</span></th>
+                <th class="col-qty"><span>Qty</span></th>
+                <th class="col-gross-amount"><span>Gross Amount</span></th>
+                <th class="col-discount"><span>Discount</span></th>
+                <th class="col-gst-value"><span>Taxable Value</span></th>
+                <th class="col-gst"><span>IGST</span></th>
+                <th class="col-total last"><span>Total</span></th>
+            </tr>';
+$html .= '</thead>';
+
+$_items = $invoice->getAllItems();
+
+$i = 0; 
+
+foreach ($_items as $_item):
+if ($_item->getOrderItem()->getParentItem()) {
+continue;
+} else { $i++;} 
+
+/*
+var_dump($_item->getData());
+exit;*/
+$qty = $_item->getQty()*1;
+$totalqtys += $qty;
+$price 	= '';
+$name 	= $_item->getName();
+$price 	= $block->formatPrice($_item->getPrice());
+$grossAmount = $block->formatPrice($_item->getRowTotalInclTax()); //tax_amount discount_amount total
+$gstValue = $block->formatPrice($_item->getRowTotal()); //tax_amount discount_amount total
+$taxAmount = $block->formatPrice($_item->getTaxAmount());
+$discountAmount = $block->formatPrice($_item->getDiscountAmount());
+$total = $block->formatPrice($_item->getRowTotalInclTax());
+
+/* items */
+$html .='<tr>';
+$html .='<td class="col-product">'.$name.'</td>';
+$html .='<td class="col-description"></td>';       
+$html .='<td class="col-qty">'.$qty.'</td>';
+$html .='<td class="col-gross-amount">'.$grossAmount.'</td>';        
+$html .='<td class="col-discount">'.$discountAmount.'</td>';
+$html .='<td class="col-gst-value">'.$gstValue.'</td>';
+$html .='<td class="col-gst">'.$taxAmount.'</td>';
+$html .='<td class="col-total last">'.$total.'</td>';
+$html .='</tr>';
+
+
+
+
+endforeach; 
+
+/* shipping charges */
+$html .='<tr>';
+$html .='<td class="col-product" colspan="2" ><strong>Shipping Charge</strong></td>';  
+$html .='<td class="col-qty">1</td>';
+$html .='<td class="col-subtotal">'.$shippingAmount.'</td>';        
+$html .='<td class="col-discount">0.00</td>';
+$html .='<td class="col-tax">0.00</td>';
+$html .='<td class="col-tax">0.00</td>';
+$html .='<td class="col-total last">'.$shippingAmount.'</td>';
+$html .='</tr>';
+
+
+/* grand total */
+$html .='<tr>';
+$html .='<td class="col-product" colspan="2"><strong>TAL QTY: '.$totalqtys.'</strong></td>';
+$html .='<td class="col-qty">&nbsp;</td>';
+$html .='<td class="col-subtotal">&nbsp;</td>';        
+$html .='<td class="col-discount">&nbsp;</td>';
+$html .='<td class="col-tax">&nbsp;</td>';
+$html .='<td class="col-total last" colspan="2"><strong>TOTAL PRICE:'. $grandTotal.'</strong><br> All values are in INR</td>';
+$html .='</tr>';
+
+$html .= '</table></td>';
+$html .= '</tr>';
+
+$html .= '<tr>';
+$html .= '<td colspan="4">&nbsp;</td>';
+$html .= '</tr>';
+
+$html .= '<tr>';
+$html .= '<td colspan="4">
+<strong>Seller Registered Address: </strong>RJ CORP LTD,<br>
+C/o Mystique Logistics Private Limited., B-2/8,Mohan cooperative Industrial Estate New Delhi, NEW DELHI - 110044. <br>
+<strong>Declaration</strong> <br>The goods sold are intended for end user consumption and not for resale.
+</td>';
+$html .= '</tr>';
+
+
+$html .= '<tr>';
+$html .= '<td colspan="4">&nbsp;</td>';
+$html .= '</tr>';
+
+$html .= '<tr>';
+$html .= '<td>&nbsp;</td>';
+$html .= '<td>&nbsp;</td>';
+$html .= "<td>Ordered Through</td>";
+$html .= "<td><strong>RJ CORP LTD</strong><br>Authorized Signature</td>";
+$html .= '</tr>';
+
+
+$html .= '</table></div></div>';
+
+/*echo $html;
+exit;*/
+
+define('M2_ROOT','/var/www/html/demo15.mobilityenterprisegroup.com/');
+
+
+require_once M2_ROOT ."app/code/OM/Pdf/view/adminhtml/templates/pdf/tcpdf/tcpdf.php";
+
+// Create new PDF
+$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+// set document information
+//$pdf->SetCreator(PDF_CREATOR);
+/*$pdf->SetAuthor('Shiv');
+$pdf->SetTitle('Invoice 001');
+$pdf->SetSubject('RJ');*/
+
+
+// set default header data
+//$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 006', PDF_HEADER_STRING);
+
+// set header and footer fonts
+$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+// set default monospaced font
+$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+// set margins
+$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+// set auto page breaks
+$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+// set image scale factor
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+// set some language-dependent strings (optional)
+if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
+	require_once(dirname(__FILE__).'/lang/eng.php');
+	$pdf->setLanguageArray($l);
+}
+
+// ---------------------------------------------------------
+
+// set font
+$pdf->SetFont('dejavusans', '', 10);
+
+// add a page
+$pdf->AddPage();
+
+// Important: this will prevent the generation of the PDF in the browser
+// as we are filling the output buffer of PHP
+
+// create some HTML content
+
+// Output the HTML content
+$pdf->writeHTML($html, true, false, true, false, '');
+ 
+$pdf->lastPage();
+
+header('Content-type: application/pdf');
+header('Content-Disposition: attachment; filename="invoice_{$invoiceId}.pdf"');
+
+$pdf->Output("invoice_{$invoiceId}.pdf", 'D');
+
+?>

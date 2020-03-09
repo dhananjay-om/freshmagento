@@ -1,0 +1,83 @@
+<?php
+  $sectionid = $this->getRequest()->getParam("id");
+  $sliderCollection = $block->getNewInDesktopCollection($sectionid);
+	$sectionCollection = $block->getSectionCollection();
+    $imageBasePath = $block->getBaseImagePath();
+?>
+<?php if(count($sectionCollection) > 0): ?>
+<button id="btnphotocat" class="btn_cat_pg">Categories</button>
+<div class="slider_category">
+	<ul>
+	<?php foreach ($sectionCollection as $_section) { ?>
+	<li><a href="<?= $this->getUrl('naturegallery/index/index', ['id' => $_section->getId()]) ?>"><?php echo $_section->getSectionTitle(); ?></a></li>
+	<?php }?>
+	</ul>
+</div>
+<?php endif; ?>
+<?php if(count($sliderCollection) > 0): ?>
+<!-- Place somewhere in the <body> of your page -->
+<div class="flexslider_container">
+  <div id="slider" class="flexslider">
+    <ul class="slides">
+      <?php foreach ($sliderCollection as $_slider) { ?>
+      <li>
+        <a href="<?php echo $_slider->getUrl(); ?>">
+        <img src="<?php echo $imageBasePath.$_slider->getImage(); ?>" alt="<?php echo $_slider->getImageAlt(); ?>" /></a>
+      </li>
+       <?php } ?>
+    </ul>
+  </div>
+  <div id="carousel" class="flexslider">
+    <ul class="slides">
+      <?php foreach ($sliderCollection as $_slider) { ?>
+      <li>
+        <img src="<?php echo $imageBasePath.$_slider->getImage(); ?>" alt="<?php echo $_slider->getImageAlt(); ?>" />
+      </li>
+       <?php } ?>
+    </ul>
+  </div>
+</div>
+
+<script type="text/javascript">
+	require(['jquery','jquery.flexslider'], function($){
+	$(window).load(function() {
+  // The slider being synced must be initialized first
+  $('#carousel').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    itemWidth: 110,
+    itemMargin: 10,
+    asNavFor: '#slider'
+  });
+ 
+  $('#slider').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    sync: "#carousel"
+  });
+});
+
+});
+</script>
+
+<!-- Gallery Category toggle for mobile  start-->
+
+<script type="text/javascript" async>
+  require(['jquery'], function($){
+
+    $('#btnphotocat').click(function() {
+      //alert('slider_category');
+      $('.slider_category').toggle("fast");
+        //$('#bar').hide("fast");
+    });
+  });
+</script>
+
+
+<!-- Gallery Category toggle for mobile  end-->
+
+<?php endif; ?>

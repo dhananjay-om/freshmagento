@@ -1,0 +1,57 @@
+<?php $sectionid = $this->getRequest()->getParam("id"); $sliderCollection = $block->getNewInDesktopCollection($sectionid); $sectionCollection = $block->getSectionCollection(); $imageBasePath = $block->getBaseImagePath(); ?> <?php if(count($sectionCollection) > 0): ?> <button id="btnvideocat" class="btn_cat_gallery">Categories</button> <div class="slider_category"><ul><?php foreach ($sectionCollection as $_section) { ?> <li><a href="<?= $this->getUrl('naturevideo/index/index', ['id' => $_section->getId()]) ?>"><?php echo $_section->getSectionTitle(); ?></a></li> <?php }?></ul></div><?php endif; ?> <?php if(count($sliderCollection) > 0): ?> <!-- Place somewhere in the <body> of your page --><div class="flexslider_container"><div id="slider" class="flexslider"><ul class="slides"><?php foreach ($sliderCollection as $_slider) { ?> <li> <video width="900" controls><source src="<?php echo $_slider->getVideoUrl(); ?>" type="video/mp4"></video></li> <?php } ?></ul></div><div id="carousel" class="flexslider"><ul class="slides"><?php foreach ($sliderCollection as $_slider) { ?> <li> <!-- <video width="200" controls><source src="<?php echo $_slider->getVideoUrl(); ?>" type="video/mp4"></video> --><img src="<?php echo $imageBasePath.$_slider->getImage(); ?>" alt="<?php echo $_slider->getImageAlt(); ?>" /></li> <?php } ?></ul></div></div><script type="text/javascript">
+  require(['jquery','jquery.flexslider'], function($){
+  $(window).load(function() {
+  
+  $('#carousel').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    itemWidth: 165,
+    itemMargin: 16,
+    asNavFor: '#slider',
+
+    start: function() {
+      $('#carousel li').on('click', function(e){
+        
+        stopVideos();
+      });
+    }
+  });
+ 
+  $('#slider').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    sync: "#carousel",
+
+    start: function() {
+      $('.flex-next').on('click', function(e){
+        stopVideos();
+      });
+      $('.flex-prev').on('click', function(e){
+        stopVideos();
+      });
+    }
+  });
+});
+
+  function stopVideos() {
+    $('video').each(function() {
+      
+      this.pause();
+      
+    });
+  }
+
+
+});</script><!-- Gallery Category toggle for mobile start--><script type="text/javascript" async>
+  require(['jquery'], function($){
+
+    $('#btnvideocat').click(function() {
+      
+      $('.slider_category').toggle("fast");
+        
+    });
+  });</script><!-- Gallery Category toggle for mobile end--><?php endif; ?>

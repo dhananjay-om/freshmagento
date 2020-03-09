@@ -1,0 +1,45 @@
+
+<?php $collection = $block->getTestimonialVideoCollection(); ?>
+<?php $collection_text = $block->getTestimonialTextCollection(); ?>
+
+<div class="product data items"
+     data-mage-init='{"mage/tabs": {"openedState": "active", "animate": {"duration": 100}, "active": 1, "disabledState": "disabled"}}'>
+    <div class="item title" data-role="collapsible">
+        <a class="switch" data-toggle="trigger" href="#tab-cars">Video Testimonial</a>
+    </div>
+    <div id="tab-cars" class="item content" data-role="content">
+        <?php  foreach ($collection as $video_data): ?>
+             <div style="float: left;">
+             <img src="<?= $block->getMediaUrl(); ?><?= $video_data->getImage();  ?>"  height="300" width="300"></div> 
+             <div>
+                <h3><?= $video_data->getTitle(); ?></h3>
+                <p><?= $video_data->getContent(); ?></p>
+                 
+
+             </div>
+
+        <?php endforeach; ?>
+
+    </div>
+
+    <div class="item title" data-role="collapsible">
+        <a class="switch" data-toggle="trigger" href="#tab-movies">Text Testimonial</a>
+    </div>
+    <div id="tab-movies" class="item content" data-role="content">
+        
+          
+          <div style="float: left;">
+             <img src=""></div> 
+             <div>
+                <h3></h3>
+                <p></p> 
+                 
+
+             </div>  
+        
+        
+
+    </div>
+
+    
+</div>

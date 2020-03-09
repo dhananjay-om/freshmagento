@@ -1,0 +1,82 @@
+.aw-rma__thread-message {
+  width: 50%;
+  float: left;
+}
+.aw-rma__thread-message .thread-header {
+  margin-bottom: 15px;
+}
+.aw-rma__thread-message .thread-header .admin__field {
+  display: inline-block;
+  margin-right: 10px;
+}
+.aw-rma__thread-message .thread-header .admin__field + .admin__field {
+  margin-top: 0;
+}
+.aw-rma__thread-message .thread-content .message-area {
+  width: calc( (100%) * 1 - 30px );
+}
+.aw-rma__thread-message .thread-content .message-area .admin__field-control .message-is-internal {
+  background: #fff1c9;
+}
+.aw-rma__thread-message .thread-content .message-area .admin__field-control textarea {
+  height: auto;
+}
+.aw-rma__actions-switch .actions-switch-checkbox {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+.aw-rma__actions-switch .actions-switch-checkbox ~ label.action-default {
+  cursor: pointer;
+}
+.aw-rma__actions-switch .actions-switch-checkbox ~ label.actions-switch-label-on {
+  background: #e3e3e3;
+}
+.aw-rma__actions-switch .actions-switch-checkbox ~ label.actions-switch-label-off {
+  color: #fff;
+  background: #555555;
+}
+.aw-rma__actions-switch .actions-switch-checkbox:checked ~ label.actions-switch-label-on {
+  background: #fff1c9;
+}
+.aw-rma__actions-switch .actions-switch-checkbox:checked ~ label.actions-switch-label-off {
+  color: #514943;
+  background: #e3e3e3;
+}
+.aw-rma__thread-messages {
+  list-style: none;
+  padding: 0;
+  clear: both;
+}
+.aw-rma__thread-messages .thread-message {
+  display: block;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  width: 70%;
+  box-sizing: border-box;
+}
+.aw-rma__thread-messages .thread-message.admin {
+  background: #e3e3e3;
+  margin-left: 30%;
+}
+.aw-rma__thread-messages .thread-message.admin.auto {
+  background: #e3e3e3;
+}
+.aw-rma__thread-messages .thread-message.admin.internal {
+  background: #fff1c9;
+}
+.aw-rma__thread-messages .thread-message.customer {
+  background: #f8f8f8;
+}
+.aw-rma__thread-messages .thread-message .thread-message-attachments,
+.aw-rma__thread-messages .thread-message .thread-message-text {
+  margin-top: 1rem;
+}
+.aw-rma__thread-messages .thread-message .thread-message-text {
+  white-space: pre-wrap;
+}

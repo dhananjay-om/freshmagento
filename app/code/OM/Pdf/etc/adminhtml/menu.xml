@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="OM::top_level" module="OM_Pdf" resource="Magento_Backend::content" sortOrder="9999" title="OrangeMantra"/>
+		<add action="advancepdf/index/index" id="OM_Pdf::index_index" module="OM_Pdf" parent="OM::top_level" resource="OM_Pdf::index_index" sortOrder="9999" title="index index"/>
+	</menu>
+</config>

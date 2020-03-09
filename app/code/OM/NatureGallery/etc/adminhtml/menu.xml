@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Om_NatureGallery::parent" title="NatureGallery" module="Om_NatureGallery" sortOrder="100" resource="Om_NatureGallery::parent"/>
+		<add id="Om_NatureGallery::content" title="NatureGallery Content" module="Om_NatureGallery" sortOrder="20" parent="Om_NatureGallery::parent" action="naturegallery/content" resource="Om_NatureGallery::content"/>
+<add id="Om_NatureGallery::section" title="NatureGallery Section" module="Om_NatureGallery" sortOrder="30" parent="Om_NatureGallery::parent" action="naturegallery/section" resource="Om_NatureGallery::section"/>
+
+    </menu>
+</config>

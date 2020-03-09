@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <faqs>
+            <list>
+                <enabled>1</enabled>
+                <page_title>Faqs</page_title>
+                <identifier>faqs</identifier>
+                <meta_keywords>Faqs</meta_keywords>
+                <meta_description>Faqs</meta_description>
+                <display_topics>5</display_topics>
+                <show_number_of_questions>5</show_number_of_questions>
+                <enable_view_more>1</enable_view_more>
+                <enable_accordion>1</enable_accordion>
+                <answer_length></answer_length>
+            </list>
+            <rating>
+                <enable>1</enable>
+                <allow_customers>all</allow_customers>
+            </rating>
+            <general>
+                <faq_block>1</faq_block>
+                <faq_search_block>1</faq_search_block>
+                <faq_maxtopic>5</faq_maxtopic>
+                <tags_block>1</tags_block>
+                <max_tags>5</max_tags>
+            </general>
+            <seo>
+                <url_suffix>.html</url_suffix>
+            </seo>
+        </faqs>
+    </default>
+</config>
